@@ -1,17 +1,39 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+	<!-- section head -->
+    @include('sections.admin.head')
+
+
+<body>
+	<!-- section loader -->
+    @include('sections.admin.loader')
+
+
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+
+		<!-- section menu haut -->
+        @include('sections.admin.menu-haut')
+
+
+		<!-- section menu gauche -->
+        @include('sections.admin.menu-gauche')
+		<div class="sidebar-bg"></div>
+
+
+		<!-- section base-content -->
+        @include('sections.admin.base-content')
+
+
+
+		<!-- section config-->
+        @include('sections.admin.config')
+
+
+
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+
+
     </div>
-</x-app-layout>
+
+	<!-- ================== Section script ================== -->
+         @include('sections.admin.script')

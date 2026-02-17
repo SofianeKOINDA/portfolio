@@ -10,7 +10,7 @@
           <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
           <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
           <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-          <li><a href="{{route('login')}}"><i class="bi bi-envelope navicon"></i> Se connecter</a></li>
+          <li><a href="{{route('login')}}"><i class="bi bi-box-arrow-in-right navicon"></i> Se connecter</a></li>
 
         </ul>
       </nav>

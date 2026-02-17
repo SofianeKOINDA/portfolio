@@ -54,6 +54,7 @@
 
           <!-- Colonne droite : expériences et formations -->
           <div class="col-lg-8 ps-4 ps-lg-5">
+
             <!-- Section Expériences -->
             <div class="resume-section" data-aos="fade-up">
               <h3><i class="bi bi-briefcase me-2"></i>Expériences Professionnelles</h3>
@@ -87,53 +88,12 @@
                 <p>Aucune formation enregistrée.</p>
               @endforelse
             </div>
+
           </div>
         </div>
 
       </div>
 
     </section>
-                  <li>Increased code test coverage from 45% to 90%</li>
-                </ul>
-              </div>
-            </div>
+                  
 
-            <!-- Education Section -->
-            <div class="resume-section" data-aos="fade-up" data-aos-delay="100">
-              <h3><i class="bi bi-mortarboard me-2"></i>Education</h3>
-
-              <div class="resume-item">
-                <h4>Master of Science in Computer Science</h4>
-                <h5>2017 - 2019</h5>
-                <p class="company"><i class="bi bi-building"></i> Stanford University</p>
-                <p>Specialized in Artificial Intelligence and Machine Learning. Graduated with honors.</p>
-              </div>
-
-              <div class="resume-item">
-                <h4>Bachelor of Science in Software Engineering</h4>
-                <h5>2013 - 2017</h5>
-                <p class="company"><i class="bi bi-building"></i> MIT</p>
-                <p>Dean's List all semesters. Led university's coding club.</p>
-              </div>
-            </div>
-
-            <!-- Certifications Section -->
-            <div class="resume-section" data-aos="fade-up" data-aos-delay="200">
-              <h3><i class="bi bi-award me-2"></i>Certifications</h3>
-
-              <div class="resume-item">
-                <h4>AWS Certified Solutions Architect - Professional</h4>
-                <h5>2023</h5>
-              </div>
-
-              <div class="resume-item">
-                <h4>Google Cloud Professional Architect</h4>
-                <h5>2022</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
