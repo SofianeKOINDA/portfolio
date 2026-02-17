@@ -81,7 +81,8 @@ class UserController extends Controller
             ->get();
 
         // Récupérer les catégories
-        $categories = Categorie::orderBy('nom', 'asc')
+        $categories = Categorie::where('etat', 'Actif')
+            ->orderBy('nom', 'asc')
             ->get();
 
         // Statistiques pour le dashboard

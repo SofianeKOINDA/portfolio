@@ -83,6 +83,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/categories/{categorie}', [CategorieController::class, 'show'])->name('categories.show');
     Route::put('/categories/{categorie}', [CategorieController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{categorie}', [CategorieController::class, 'destroy'])->name('categories.destroy');
+    Route::patch('/categories/{categorie}/activate', [CategorieController::class, 'activate'])->name('categories.activate');
 
     // Routes pour les associations compétence-projet
     Route::get('/competence-projets', [CompetenceProjetController::class, 'index'])->name('competence-projets.liste');

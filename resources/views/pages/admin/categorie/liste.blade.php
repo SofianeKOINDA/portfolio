@@ -36,6 +36,7 @@
 							<tr>
 								<th width="1%" class="text-center">#</th>
 								<th class="text-nowrap">Nom</th>
+								<th class="text-nowrap text-center">État</th>
 								<th class="text-nowrap text-center">Projets</th>
 								<th width="1%" data-orderable="false" class="text-center">Actions</th>
 							</tr>
@@ -43,12 +44,17 @@
 						<tbody>
 							@foreach($categories as $categorie)
                                 <tr class="odd gradeX hover-highlight">
-                                    <!-- Numéro d'ordre -->
                                     <td width="1%" class="f-w-600 text-inverse text-center">{{ $loop->iteration }}</td>
 
-                                    <!-- Nom de la catégorie -->
                                     <td class="font-weight-bold">{{ $categorie->nom }}</td>
 
+                                    <!-- État -->
+                                    <td class="text-center">
+                                        <span class="badge badge-{{ $categorie->etat == 'Actif' ? 'success' : 'danger' }} badge-pill">
+                                            <i class="fa fa-{{ $categorie->etat == 'Actif' ? 'check-circle' : 'times-circle' }}"></i>
+                                            {{ $categorie->etat }}
+                                        </span>
+                                    </td>
 
                                     <!-- Nombre de projets -->
                                     <td class="text-center">
@@ -62,12 +68,21 @@
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-xs btn-warning" title="Modifier"
                                                 onclick="openEditModal({{ $categorie->id }})"
-                                                data-nom="{{ $categorie->nom }}">
+                                                data-nom="{{ $categorie->nom }}"
+                                                data-etat="{{ $categorie->etat }}">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button type="button" class="btn btn-xs btn-danger" title="Supprimer" onclick="confirmDelete({{ $categorie->id }}, '{{ $categorie->nom }}')">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
+                                            @if($categorie->etat == 'Actif')
+                                                <button type="button" class="btn btn-xs btn-danger" title="Désactiver"
+                                                    onclick="confirmDeactivate({{ $categorie->id }}, '{{ $categorie->nom }}')">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            @else
+                                                <button type="button" class="btn btn-xs btn-success" title="Activer"
+                                                    onclick="confirmActivate({{ $categorie->id }}, '{{ $categorie->nom }}')">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
@@ -81,51 +96,53 @@
 		<!-- Section Config -->
         @include("sections.admin.config")
 
-		<!-- Section scroll to top  -->
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 	</div>
 
 	<!-- Modal d'édition -->
-	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content bg-dark text-white">
 				<div class="modal-header bg-black border-secondary">
-					<h5 class="modal-title text-white" id="editModalLabel">
-						<i class="fa fa-edit"></i> Modifier la catégorie
-					</h5>
-					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+					<h5 class="modal-title text-white"><i class="fa fa-edit"></i> Modifier la catégorie</h5>
+					<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
 				</div>
 				<form id="editForm" method="POST">
 					@csrf
 					@method('PUT')
 					<div class="modal-body bg-white">
-
-                        	<!-- Modification du nom -->
-
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="edit_nom" class="form-label text-dark">
-										<i class="fa fa-code text-primary"></i> Nom de la catégorie *
+										<i class="fa fa-tag text-primary"></i> Nom de la catégorie *
 									</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text bg-primary text-white">
-												<i class="fa fa-code"></i>
-											</span>
+											<span class="input-group-text bg-primary text-white"><i class="fa fa-tag"></i></span>
 										</div>
 										<input type="text" class="form-control" id="edit_nom" name="nom" placeholder="Entrez le nom de la catégorie" required>
 									</div>
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="edit_etat" class="form-label text-dark">
+										<i class="fa fa-toggle-on text-success"></i> État *
+									</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text bg-success text-white"><i class="fa fa-toggle-on"></i></span>
+										</div>
+										<select class="form-control" id="edit_etat" name="etat" required>
+											<option value="Actif">Actif</option>
+											<option value="Inactif">Inactif</option>
+										</select>
+									</div>
+								</div>
+							</div>
 						</div>
-
-
 					</div>
-
-
 					<div class="modal-footer bg-dark border-secondary">
 						<button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">
 							<i class="fa fa-times-circle"></i> Annuler
@@ -140,16 +157,12 @@
 	</div>
 
 	<!-- Modal d'ajout -->
-	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content bg-dark text-white">
 				<div class="modal-header bg-black border-secondary">
-					<h5 class="modal-title text-white" id="addModalLabel">
-						<i class="fa fa-plus"></i> Ajouter une nouvelle catégorie
-					</h5>
-					<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+					<h5 class="modal-title text-white"><i class="fa fa-plus"></i> Ajouter une nouvelle catégorie</h5>
+					<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
 				</div>
 				<form id="addForm" method="POST" action="{{ route('categories.store') }}">
 					@csrf
@@ -158,27 +171,33 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="add_nom" class="form-label text-dark">
-										<i class="fa fa-code text-primary"></i> Nom de la catégorie *
+										<i class="fa fa-tag text-primary"></i> Nom de la catégorie *
 									</label>
 									<div class="input-group">
 										<div class="input-group-prepend">
-											<span class="input-group-text bg-primary text-white">
-												<i class="fa fa-code"></i>
-											</span>
+											<span class="input-group-text bg-primary text-white"><i class="fa fa-tag"></i></span>
 										</div>
 										<input type="text" class="form-control" id="add_nom" name="nom" placeholder="Entrez le nom de la catégorie" required>
 									</div>
 								</div>
 							</div>
-
-
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="add_etat" class="form-label text-dark">
+										<i class="fa fa-toggle-on text-success"></i> État *
+									</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text bg-success text-white"><i class="fa fa-toggle-on"></i></span>
+										</div>
+										<select class="form-control" id="add_etat" name="etat" required>
+											<option value="Actif">Actif</option>
+											<option value="Inactif">Inactif</option>
+										</select>
+									</div>
+								</div>
+							</div>
 						</div>
-
-
-
-
-
-
 					</div>
 					<div class="modal-footer bg-dark border-secondary">
 						<button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">
@@ -193,13 +212,10 @@
 		</div>
 	</div>
 
-    <!-- Section Script -->
     @include("sections.admin.script")
-
-    <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-	<style>
+<style>
 		/* Améliorations du design du tableau */
 		.table-hover tbody tr:hover {
 			background-color: #f8f9fa !important;
@@ -322,71 +338,70 @@
 
 	<script>
 		function openEditModal(id) {
-			// Récupérer le bouton cliqué
 			var button = event.target.closest('button');
-
-			// Récupérer les données depuis les attributs data
-			var nom = button.getAttribute('data-nom');
-
-			// Remplir le formulaire avec les données
-			document.getElementById('edit_nom').value = nom || '';
-
-			// Mettre à jour l'action du formulaire
+			document.getElementById('edit_nom').value = button.getAttribute('data-nom') || '';
+			document.getElementById('edit_etat').value = button.getAttribute('data-etat') || 'Actif';
 			document.getElementById('editForm').action = '/admin/categories/' + id;
-
-			// Afficher le modal
 			$('#editModal').modal('show');
 		}
 
 		function openAddModal() {
-			// Réinitialiser le formulaire
 			document.getElementById('addForm').reset();
-
-			// Afficher le modal
 			$('#addModal').modal('show');
 		}
 
-		// Fonction de confirmation pour supprimer une catégorie
-		function confirmDelete(id, nom) {
+		function confirmDeactivate(id, nom) {
 			Swal.fire({
 				title: 'Êtes-vous sûr ?',
-				text: `Voulez-vous vraiment supprimer la catégorie "${nom}" ?`,
+				text: `Voulez-vous vraiment désactiver la catégorie "${nom}" ?`,
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#d33',
 				cancelButtonColor: '#3085d6',
-				confirmButtonText: 'Oui, supprimer !',
+				confirmButtonText: 'Oui, désactiver !',
 				cancelButtonText: 'Annuler'
 			}).then((result) => {
 				if (result.isConfirmed) {
-					// Créer un formulaire temporaire pour l'envoi
 					var form = document.createElement('form');
 					form.method = 'POST';
 					form.action = '/admin/categories/' + id;
-
-					var csrfToken = document.createElement('input');
-					csrfToken.type = 'hidden';
-					csrfToken.name = '_token';
-					csrfToken.value = '{{ csrf_token() }}';
-
-					var methodField = document.createElement('input');
-					methodField.type = 'hidden';
-					methodField.name = '_method';
-					methodField.value = 'DELETE';
-
-					form.appendChild(csrfToken);
-					form.appendChild(methodField);
+					form.innerHTML = `
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="_method" value="DELETE">
+					`;
 					document.body.appendChild(form);
 					form.submit();
 				}
 			});
 		}
 
-		// Fonction de confirmation pour modifier une catégorie
-		function confirmEdit() {
-			// Récupérer le nom depuis le formulaire
-			var nom = document.getElementById('edit_nom').value;
+		function confirmActivate(id, nom) {
+			Swal.fire({
+				title: 'Activer la catégorie',
+				text: `Voulez-vous activer la catégorie "${nom}" ?`,
+				icon: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#28a745',
+				cancelButtonColor: '#6c757d',
+				confirmButtonText: 'Oui, activer !',
+				cancelButtonText: 'Annuler'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					var form = document.createElement('form');
+					form.method = 'POST';
+					form.action = '/admin/categories/' + id + '/activate';
+					form.innerHTML = `
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="_method" value="PATCH">
+					`;
+					document.body.appendChild(form);
+					form.submit();
+				}
+			});
+		}
 
+		function confirmEdit() {
+			var nom = document.getElementById('edit_nom').value;
 			Swal.fire({
 				title: 'Confirmer la modification',
 				text: `Voulez-vous enregistrer les modifications pour la catégorie "${nom}" ?`,
@@ -398,7 +413,6 @@
 				cancelButtonText: 'Annuler'
 			}).then((result) => {
 				if (result.isConfirmed) {
-					// Soumettre le formulaire
 					document.getElementById('editForm').submit();
 				}
 			});
@@ -406,4 +420,3 @@
 	</script>
 </body>
 </html>
-

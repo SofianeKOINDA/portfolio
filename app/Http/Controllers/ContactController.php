@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
+use Illuminate\Http\Request;
 
 /**
  * Contrôleur pour la gestion des messages de contact

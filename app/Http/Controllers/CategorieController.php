@@ -75,22 +75,32 @@ class CategorieController extends Controller
     }
 
     /**
-     * Supprime définitivement une catégorie
+     * Désactive un projet (change l'état en Inactif)
      *
-     * @param Categorie $categorie
+     * @param Projet $projet
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Categorie $categorie)
     {
-        // Vérifier s'il y a des relations avant de supprimer
-        if ($categorie->projets()->count() > 0) {
-            return redirect()->route('categories.liste')
-                ->with('error', 'Impossible de supprimer cette catégorie car elle contient des projets.');
-        }
-
-        $categorie->delete();
+        $categorie->update(['etat' => 'Inactif']);
 
         return redirect()->route('categories.liste')
-            ->with('success', 'Catégorie supprimée avec succès.');
+            ->with('success', 'Catégorie désactivée avec succès.');
+    }
+
+    /**
+     * Active un projet (change l'état en Actif)
+     *
+     * @param Projet $projet
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function activate(Categorie $categorie)
+    {
+        $categorie->update(['etat' => 'Actif']);
+
+        return redirect()->route('categories.liste')
+            ->with('success', 'Catégorie activée avec succès.');
     }
 }
+
+

@@ -113,7 +113,7 @@
 				</div>
 				<form id="replyForm" method="POST">
 					@csrf
-					@method('PUT')
+					@method('PATCH')
 					<div class="modal-body bg-light">
                         <!-- Infos Expéditeur -->
                         <div class="card border-0 shadow-sm mb-3">
