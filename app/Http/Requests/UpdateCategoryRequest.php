@@ -30,6 +30,12 @@ class UpdateCategoryRequest extends FormRequest
                 'max:255',
                 //être unique dans la table categories, sauf pour la catégorie actuelle (ignore)
                 Rule::unique('categories', 'nom')->ignore($this->categorie),
+                'etat' => [
+                    'sometimes',
+                    'required',
+                    'string',
+                    Rule::in(['Actif', 'Inactif']),
+                ],
             ],
         ];
     }
@@ -43,6 +49,9 @@ class UpdateCategoryRequest extends FormRequest
             'nom.required' => 'Le nom de la catégorie est requis.',
             'nom.max' => 'Le nom ne peut pas dépasser 255 caractères.',
             'nom.unique' => 'Une catégorie avec ce nom existe déjà.',
+            'etat.required' => 'L\'état de la catégorie est requis.',
+            'etat.string' => 'L\'état doit être une chaîne de caractères.',
+            'etat.in' => 'L\'état doit être soit "Actif" soit "Inactif".',
         ];
     }
 }

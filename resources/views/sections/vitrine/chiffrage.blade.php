@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <div class="stats-wrapper">
-              {{-- Commentaire étudiant : j'affiche les statistiques envoyées par le backend depuis le contrôleur --}}
+              {{--  j'affiche les statistiques envoyées par le backend depuis le contrôleur --}}
               <div class="stats-item" data-aos="zoom-in" data-aos-delay="150">
                 <div class="icon-wrapper">
                   <i class="bi bi-folder"></i>

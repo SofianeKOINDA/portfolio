@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row align-items-center">
 
-        {{-- Petit commentaire d'étudiant : j'affiche l'intro avec les données de l'utilisateur récupérées côté backend --}}
+        {{-- j'affiche l'intro avec les données de l'utilisateur récupérées côté backend --}}
         <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
           <div class="hero-text">
             <h1>{{ $user->nom ?? 'Mon Nom' }}<span class="accent-text"> Portfolio</span></h1>
@@ -23,8 +23,8 @@
             </div>
 
                 <div class="social-links">
-                  <a href="#"><i class="bi bi-dribbble"></i></a>
-                  <a href="#"><i class="bi bi-behance"></i></a>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                  <a href="#"><i class="bi bi-tiktok"></i></a>
                   <a href="#"><i class="bi bi-github"></i></a>
                   <a href="#"><i class="bi bi-linkedin"></i></a>
                 </div>

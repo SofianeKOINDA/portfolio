@@ -13,6 +13,7 @@ class Categorie extends Model
     /* Les attributs qui sont assignables en masse */
     protected $fillable = [
         'nom',
+        'etat',
     ];
 
     /* Les attributs qui doivent être convertis en types natifs */

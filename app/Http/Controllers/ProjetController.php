@@ -49,6 +49,10 @@ class ProjetController extends Controller
     {
         $data = $request->validated();
 
+         if (!empty($request->technologies)) {
+        $data['technologies'] = array_map('trim', explode(',', $request->technologies));
+    }
+
         // Gestion des images
         $imageFields = ['photo1', 'photo2', 'photo3'];
         foreach ($imageFields as $field) {
@@ -93,6 +97,12 @@ class ProjetController extends Controller
     public function update(UpdateProjetRequest $request, Projet $projet)
     {
         $data = $request->validated();
+
+ if (!empty($request->technologies)) {
+        $data['technologies'] = array_map('trim', explode(',', $request->technologies));
+    } else {
+        $data['technologies'] = [];
+    }
 
         // Gestion des images
         $imageFields = ['photo1', 'photo2', 'photo3'];

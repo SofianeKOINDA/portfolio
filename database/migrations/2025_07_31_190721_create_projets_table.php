@@ -17,14 +17,14 @@ return new class extends Migration
             $table->string('photo1')->nullable();
             $table->string('photo2')->nullable();
             $table->string('photo3')->nullable();
-            $table->text('description');
-            $table->date('date');
+            $table->text('description')->nullable();
+            $table->date('date')->nullable();
             $table->string('client')->nullable();
             $table->enum('type', ['Projet', 'Service']);
             $table->string('url')->nullable();
             $table->json('technologies')->nullable();
             $table->enum('etat', ['Actif', 'Inactif'])->default('Actif');
-            $table->foreignId('categorie_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('categorie_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

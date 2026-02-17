@@ -173,7 +173,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         // Empêcher la suppression de l'utilisateur connecté
-        $currentUser = auth()->user();
+        $currentUser = auth()->Auth::user();
         if ($user->id === $currentUser->id) {
                     return redirect()->route('users.liste')
             ->with('error', 'Vous ne pouvez pas supprimer votre propre compte.');

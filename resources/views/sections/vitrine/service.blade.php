@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    {{-- Commentaire étudiant : je boucle sur les services actifs envoyés par le backend --}}
+    {{-- je boucle sur les services actifs envoyés par le backend --}}
     <div class="row justify-content-center">
       {{-- Boucle sur les services actifs du backend --}}
       @forelse($services as $service)

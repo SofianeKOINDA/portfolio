@@ -51,7 +51,7 @@
           <h3>Me contacter</h3>
           <p>Remplissez le formulaire ci-dessous, je répondrai dès que possible.</p>
 
-          {{-- Formulaire public qui envoie vers ContactController@storePublic --}}
+          {{-- Formulaire public qui envoie vers ContactControllerstorePublic --}}
           <form action="{{ route('contact.store') }}" method="POST">
             @csrf
             <div class="row gy-4">

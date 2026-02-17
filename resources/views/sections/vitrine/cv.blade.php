@@ -13,7 +13,7 @@
           <div class="col-lg-4">
             <div class="resume-side" data-aos="fade-right" data-aos-delay="100">
               <div class="profile-img mb-4">
-                <img src="{{ asset($user->photo ?? 'templates/templateVitrine/assets/img/profile/profile-square-2.webp') }}" alt="{{ $user->nom }}" class="img-fluid rounded">
+                <img src="templates/templateVitrine/assets/img/profile/profile-square-2.webp" alt="{{ $user->nom }}" class="img-fluid rounded">
               </div>
 
               <h3>Résumé</h3>
@@ -95,5 +95,5 @@
       </div>
 
     </section>
-                  
+
 

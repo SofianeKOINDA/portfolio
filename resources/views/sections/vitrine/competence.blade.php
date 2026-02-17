@@ -13,7 +13,7 @@
         <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
           <h3>Techniques</h3>
           <div class="skills-animation">
-            {{-- Commentaire étudiant : je boucle sur les compétences techniques fournies par le contrôleur --}}
+            {{--je boucle sur les compétences techniques fournies par le contrôleur --}}
             @forelse($competencesTechniques as $competence)
               <div class="skill-item">
                 <div class="d-flex justify-content-between align-items-center">
@@ -38,7 +38,7 @@
         <div class="skills-category" data-aos="fade-up" data-aos-delay="300">
           <h3>Soft Skills</h3>
           <div class="skills-animation">
-            {{-- Commentaire étudiant : boucle pour les soft skills --}}
+            {{--  boucle pour les soft skills --}}
             @forelse($competencesSoftSkills as $soft)
               <div class="skill-item">
                 <div class="d-flex justify-content-between align-items-center">

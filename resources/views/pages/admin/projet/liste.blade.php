@@ -29,7 +29,15 @@
 						<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
 					</div>
 				</div>
-
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 				<div class="panel-body">
 					<table id="data-table-default" class="table table-striped table-bordered table-hover table-td-valign-middle">
 						<thead class="bg-dark text-white">
@@ -105,7 +113,7 @@
                                                 data-nom="{{ $projet->nom }}"
                                                 data-client="{{ $projet->client }}"
                                                 data-type="{{ $projet->type }}"
-                                                data-date="{{ $projet->date }}"
+                                                data-date="{{ \Carbon\Carbon::parse($projet->date)->format('Y-m-d') }}"
                                                 data-url="{{ $projet->url }}"
                                                 data-technologies="{{ is_array($projet->technologies) ? implode(',', $projet->technologies) : $projet->technologies }}"
                                                 data-description="{{ $projet->description }}"

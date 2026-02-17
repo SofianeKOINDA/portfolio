@@ -31,7 +31,7 @@ class UpdateProjetRequest extends FormRequest
             'client' => 'nullable|string|max:255',
             'type' => 'sometimes|required|string|max:100',
             'url' => 'nullable|url|max:255',
-            'technologies' => 'nullable|array',
+            'technologies' => 'nullable|string',
             'technologies.*' => 'string|max:100',
             'etat' => 'sometimes|required|string|in:Actif,Inactif',
             'categorie_id' => 'nullable|exists:categories,id',
