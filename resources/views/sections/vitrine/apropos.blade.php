@@ -7,7 +7,7 @@
         <div class="profile-card">
           <div class="profile-header">
             <div class="profile-image">
-              <img src="templates/templateVitrine/assets/img/profile/profile-square-3.webp" alt="{{ $user->nom ?? 'Profile' }}" class="img-fluid">
+              <img src="templates/templateVitrine/assets/img/profile/WhatsApp Image 2026-02-17 at 22.12.32.jpeg" alt="{{ $user->nom ?? 'Profile' }}" class="img-fluid">
             </div>
             <div class="profile-badge">
               <i class="bi bi-check-circle-fill"></i>
