@@ -7,7 +7,7 @@
         <div class="profile-card">
           <div class="profile-header">
             <div class="profile-image">
-              <img src="{{ asset($user->photo ?? 'templates/templateVitrine/assets/img/profile/profile-square-3.webp') }}" alt="{{ $user->nom ?? 'Profile' }}" class="img-fluid">
+              <img src="templates/templateVitrine/assets/img/profile/profile-square-3.webp" alt="{{ $user->nom ?? 'Profile' }}" class="img-fluid">
             </div>
             <div class="profile-badge">
               <i class="bi bi-check-circle-fill"></i>
@@ -46,7 +46,7 @@
       <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
         <div class="about-content">
           <div class="section-header">
-            <span class="badge-text">Get to Know Me</span>
+            <span class="badge-text">A propos</span>
             <h2>{{ $user->slogan ?? 'Passionné par la création numérique' }}</h2>
           </div>
 

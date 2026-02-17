@@ -10,16 +10,16 @@
 								<img src="templates/templateAdmin/img/user/user-13.jpg" alt="" />
 							</div>
 							<div class="info">
-								<b class="caret pull-right"></b>Sean Ngu
-								<small>Front end developer</small>
+								<b class="caret pull-right"></b>Benewende Sofiane KOINDA
+								<small>Back-end developer</small>
 							</div>
 						</a>
 					</li>
 					<li>
 						<ul class="nav nav-profile">
-							<li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
+							<li><a href="javascript:;"><i class="fa fa-cog"></i> Paramètre</a></li>
 							<li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
-							<li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
+							<li><a href="javascript:;"><i class="fa fa-question-circle"></i> Aide</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -36,7 +36,7 @@
                          <!-- Mes Formations -->
                     <li>
 						 <a href="{{route('formations.liste')}}">
-                            <i class="fa fa-chart-line"></i>
+                            <i class="fa fa-graduation-cap"></i>
 							<span>Mes Formations</span>
 						</a>
 					</li>
@@ -54,6 +54,12 @@
 							<span>Mes Entreprises</span>
 						</a>
 					</li>
+                    <!-- Mes Expériences -->
+                    <li>
+                        <a href="{{route('experiences.liste')}}">
+                            <i class="fa fa-chart-line"></i>
+                            <span>Mes Expériences</span>
+                        </a>
                          <!-- Catégories -->
                     <li>
 						<a href="{{route('categories.liste')}}">

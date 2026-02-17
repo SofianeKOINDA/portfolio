@@ -36,7 +36,7 @@
           <div class="hero-visual">
             <div class="profile-container">
               <div class="profile-background"></div>
-              <img src="{{ asset($user->photo ?? 'templates/templateVitrine/assets/img/profile/profile-2.webp') }}" alt="{{ $user->nom ?? 'Profil' }}" class="profile-image">
+              <img src="templates/templateVitrine/assets/img/profile/profile-2.webp" alt="{{ $user->nom ?? 'Profil' }}" class="profile-image">
             </div>
           </div>
         </div>

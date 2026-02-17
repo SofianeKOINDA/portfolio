@@ -15,4 +15,10 @@
 	<link href="{{ asset('templates/templateAdmin/assets/plugins/nvd3/build/nv.d3.css') }}" rel="stylesheet" />
 	<link href="{{ asset('templates/templateAdmin/assets/plugins/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
 	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="{{ asset('templates/templateAdmin/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+	<link href="{{ asset('templates/templateAdmin/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
 </head>
