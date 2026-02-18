@@ -23,10 +23,10 @@
             </div>
 
                 <div class="social-links">
-                  <a href="#"><i class="bi bi-facebook"></i></a>
-                  <a href="#"><i class="bi bi-tiktok"></i></a>
-                  <a href="#"><i class="bi bi-github"></i></a>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                  <a href="https://www.facebook.com/share/1ANcCaRp5G/?mibextid=wwXIfr"><i class="bi bi-facebook"></i></a>
+                  <a href="https://github.com/SofianeKOINDA"><i class="bi bi-github"></i></a>
+                  <a href="https://www.tiktok.com/@sk_sama4real?_r=1&_t=ZS-940vyRFN3yS"><i class="bi bi-tiktok"></i></a>
+                  <a href="https://www.linkedin.com/in/benewende-sofiane-koinda-58704a258/"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>

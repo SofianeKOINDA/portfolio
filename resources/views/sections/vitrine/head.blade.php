@@ -1,9 +1,10 @@
 <head>
   <meta charset="utf-8">
+  <link rel="icon" type="image/jpg" href="/templates/templateVitrine/assets/img/profile/WhatsApp Image 2026-02-17 at 22.10.52.jpeg">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - SnapFolio Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Portfolio Sofiane</title>
+  <meta name="description" content="Portfolio de Sofiane, développeur web et designer passionné. Découvrez mes projets, compétences et expériences dans le domaine du numérique.">
+  <meta name="keywords" content="portfolio, développeur web, designer, projets, compétences, expériences, numérique">
 
   <!-- Favicons -->
   <link href="templates/templateVitrine/templates/templateVitrine/assets/img/favicon.png" rel="icon">

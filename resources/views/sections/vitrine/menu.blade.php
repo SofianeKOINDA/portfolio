@@ -16,11 +16,11 @@
       </nav>
 
       <div class="social-links text-center">
-        <a href="#" class="twitter"><i class="bi bi-github"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bi bi-tiktok"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/SofianeKOINDA" class="twitter"><i class="bi bi-github"></i></a>
+        <a href="https://www.facebook.com/share/1ANcCaRp5G/?mibextid=wwXIfr" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/lordofyarse?igsh=MTcyNmNjOWJ0M2Jqbw%3D%3D&utm_source=qr" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.tiktok.com/@sk_sama4real?_r=1&_t=ZS-940vyRFN3yS" class="google-plus"><i class="bi bi-tiktok"></i></a>
+        <a href="https://www.linkedin.com/in/benewende-sofiane-koinda-58704a258/" class="linkedin"><i class="bi bi-linkedin"></i></a>
       </div>
 
     </div>
