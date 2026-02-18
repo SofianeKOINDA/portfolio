@@ -168,8 +168,10 @@
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label class="form-label">Type (ex: Web, Mobile) *</label>
-									<input type="text" class="form-control" id="edit_type" name="type" required>
+									<select class="form-control" id="edit_type" name="type" required>
+                                        <option value="Projet">Projet</option>
+                                        <option value="Service">Service</option>
+                                    </select>
 								</div>
 							</div>
 							<div class="col-md-4">
