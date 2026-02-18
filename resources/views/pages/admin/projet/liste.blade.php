@@ -245,53 +245,131 @@
 	</div>
 
 	<!-- Modal d'ajout (Action store) -->
-	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-xl" role="document">
-			<div class="modal-content bg-dark text-white">
-				<div class="modal-header bg-black border-secondary">
-					<h5 class="modal-title text-white"><i class="fa fa-plus"></i> Ajouter un nouveau projet</h5>
-					<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
-				</div>
-				<form action="{{ route('projets.store') }}" method="POST" enctype="multipart/form-data">
-					@csrf
-					<div class="modal-body bg-white text-dark">
-                        <!-- Structure identique au modal d'édition mais vide -->
-						<div class="row">
-							<div class="col-md-6"><div class="form-group"><label class="form-label">Nom du projet *</label><input type="text" class="form-control" name="nom" required></div></div>
-							<div class="col-md-6"><div class="form-group"><label class="form-label">Client *</label><input type="text" class="form-control" name="client" required></div></div>
-						</div>
-                        <div class="row">
-							<div class="col-md-4"><div class="form-group"><label class="form-label">Type *</label><input type="text" class="form-control" name="type" required></div></div>
-							<div class="col-md-4"><div class="form-group"><label class="form-label">Date *</label><input type="date" class="form-control" name="date" required></div></div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label class="form-label">Catégorie *</label>
-									<select class="form-control" name="categorie_id" required>
-                                        <option value="">Choisir...</option>
-										@foreach($categories as $cat)
-											<option value="{{ $cat->id }}">{{ $cat->nom }}</option>
-										@endforeach
-									</select>
-								</div>
-							</div>
-						</div>
-                        <div class="row">
-							<div class="col-md-12"><div class="form-group"><label class="form-label">Technologies</label><input type="text" class="form-control" name="technologies"></div></div>
-						</div>
-                        <div class="row">
-							<div class="col-md-4"><div class="form-group"><label class="form-label">Photo 1</label><input type="file" class="form-control" name="photo1"></div></div>
-							<div class="col-md-4"><div class="form-group"><label class="form-label">Photo 2</label><input type="file" class="form-control" name="photo2"></div></div>
-							<div class="col-md-4"><div class="form-group"><label class="form-label">Photo 3</label><input type="file" class="form-control" name="photo3"></div></div>
-						</div>
-					</div>
-					<div class="modal-footer bg-dark">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-						<button type="submit" class="btn btn-primary">Créer le projet</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	<!-- Modal d'ajout (Action store) -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header bg-black border-secondary">
+                <h5 class="modal-title text-white"><i class="fa fa-plus"></i> Ajouter un nouveau projet</h5>
+                <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+            </div>
+            <form action="{{ route('projets.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body bg-white text-dark">
+
+                    {{-- Nom & Client --}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Nom du projet *</label>
+                                <input type="text" class="form-control" name="nom" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Client *</label>
+                                <input type="text" class="form-control" name="client" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Type & Date --}}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Type *</label>
+                                <select class="form-control" name="type" required>
+                                    <option value="">Choisir...</option>
+                                    <option value="Projet">Projet</option>
+                                    <option value="Service">Service</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Date *</label>
+                                <input type="date" class="form-control" name="date" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Catégorie *</label>
+                                <select class="form-control" name="categorie_id" required>
+                                    <option value="">Choisir...</option>
+                                    @foreach($categories as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->nom }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Technologies & URL --}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Technologies</label>
+                                <input type="text" class="form-control" name="technologies" placeholder="PHP, Laravel...">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">URL du projet</label>
+                                <input type="url" class="form-control" name="url" placeholder="https://...">
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Description --}}
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" rows="3"></textarea>
+                    </div>
+
+                    {{-- Catégorie & État --}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">État *</label>
+                                <select class="form-control" name="etat" required>
+                                    <option value="Actif">Actif</option>
+                                    <option value="Inactif">Inactif</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Photos --}}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Photo 1</label>
+                                <input type="file" class="form-control" name="photo1">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Photo 2</label>
+                                <input type="file" class="form-control" name="photo2">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Photo 3</label>
+                                <input type="file" class="form-control" name="photo3">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer bg-dark">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Créer le projet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
     @include("sections.admin.script")
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -365,7 +443,7 @@
 			font-weight: 600;
 		}
 
-		.form-control {
+		.input-group .form-control {
 			border-left: none;
 			border-radius: 0 5px 5px 0;
 		}
